@@ -132,8 +132,37 @@ def checkWinTopRight(col, row, player_number):
     return False
 
 def intelligentFunction1(turn, board):
-    row_p1 = input()
-    return int(row_p1)
+    subBoardSize = 3
+    subBoardTimesX = (len(board)-subBoardSize+1)
+    subBoardTimesY = (len(board[0])-subBoardSize+1)
+    maxSum = 0
+    rowMaxSum = 0
+
+    for x in range(subBoardTimesY):
+        for y in range(subBoardTimesX):
+            count = 0
+            for xSum in range(subBoardTimesX-2):
+                for ySum in range(subBoardTimesY-1):
+                    # print("({0},{1})".format(x+xSum,y+ySum),end=" ")
+                    # print(board[y+ySum][x+xSum])
+                    if board[y+ySum][x+xSum] == 2:
+                        count += 1
+            # print("Count: {0}".format(count))
+            if count > maxSum:
+                maxSum = count
+                rowMaxSum = y+ySum
+            # print("Max Sum: {0}".format(maxSum))
+            # print("Row Max Sum: {0}".format(rowMaxSum))
+            # print()
+
+    rowToPlay = random.randint(rowMaxSum-1,rowMaxSum+1)
+
+    if rowToPlay < 0:
+        rowToPlay = 0
+    elif rowToPlay > 6:
+        rowToPlay = 6
+
+    return rowToPlay
 
 def intelligentFunction2(turn, board):
     return random.randint(0,6)
