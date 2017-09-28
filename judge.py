@@ -1,6 +1,6 @@
 import random
 
-width, height = 7, 6
+width, height = 5, 5
 
 #board = [[0 for x in range(width)]for y in range (height)]
 board = [[0 for y in range(height)]for x in range (width)]
@@ -132,11 +132,11 @@ def checkWinTopRight(col, row, player_number):
     return False
 
 def intelligentFunction1(turn, board):
-    row_p1 = input()
-    return int(row_p1)
+    return random.randint(0,3)
 
 def intelligentFunction2(turn, board):
-    return random.randint(0,6)
+    return random.randint(0,3)
+
 
 def main():
     global board
